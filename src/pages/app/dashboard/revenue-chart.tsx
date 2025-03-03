@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { useMemo } from 'react'
 import {
   CartesianGrid,
   Line,
@@ -24,6 +25,15 @@ export function RevenueChart() {
     queryFn: getDailyRevenueInPeriod,
   })
 
+  const charData = useMemo(() => {
+    return dailyRevenueInPeriod?.map((chartItem) => {
+      return {
+        date: chartItem.date,
+        receipt: chartItem.receipt / 100,
+      }
+    })
+  }, [dailyRevenueInPeriod])
+
   return (
     <Card className="col-span-6">
       <CardHeader className="flex-row items-center justify-between pb-8">
@@ -35,9 +45,9 @@ export function RevenueChart() {
         </div>
       </CardHeader>
       <CardContent>
-        {dailyRevenueInPeriod && (
+        {charData && (
           <ResponsiveContainer width="100%" height={240}>
-            <LineChart data={dailyRevenueInPeriod} style={{ fontSize: 12 }}>
+            <LineChart data={charData} style={{ fontSize: 12 }}>
               <XAxis dataKey="date" tickLine={false} axisLine={false} dy={16} />
               <YAxis
                 stroke="#888"
