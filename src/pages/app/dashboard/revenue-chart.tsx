@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { Loader2 } from 'lucide-react'
 import { useMemo } from 'react'
 import {
   CartesianGrid,
@@ -45,7 +46,7 @@ export function RevenueChart() {
         </div>
       </CardHeader>
       <CardContent>
-        {charData && (
+        {charData ? (
           <ResponsiveContainer width="100%" height={240}>
             <LineChart data={charData} style={{ fontSize: 12 }}>
               <XAxis dataKey="date" tickLine={false} axisLine={false} dy={16} />
@@ -72,6 +73,10 @@ export function RevenueChart() {
               />
             </LineChart>
           </ResponsiveContainer>
+        ) : (
+          <div className="w=full flex h-[240px] items-center justify-center">
+            <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+          </div>
         )}
       </CardContent>
     </Card>
