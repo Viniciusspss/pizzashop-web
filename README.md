@@ -65,7 +65,9 @@ O front-end estará disponível em http://localhost:5173/.
 # 🌐 Como Rodar o Projeto Back-End
 O back-end deve ser inicializado separadamente. Siga os passos abaixo:
 
-Link do projeto back-end: https://github.com/rocketseat-education/pizzashop-api
+Clone o repositório:
+
+``` git clone https://github.com/rocketseat-education/pizzashop-api ``` 
 
 Navegue até a pasta do back-end (certifique-se de que o back-end esteja configurado corretamente):
 
